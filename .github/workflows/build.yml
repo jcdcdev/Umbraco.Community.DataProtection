@@ -13,5 +13,3 @@ jobs:
     with:
       project-name: ${{ needs.metadata.outputs.project-name }}
       project-path: ${{ needs.metadata.outputs.project-path }}
-      npm-working-dir: ${{ needs.metadata.outputs.npm-working-dir }}
-      npm-enabled: true

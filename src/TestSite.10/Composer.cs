@@ -7,5 +7,6 @@ public class Composer : IComposer
 {
     public void Compose(IUmbracoBuilder builder)
     {
+        builder.AddUmbracoDataProtection();
     }
 }

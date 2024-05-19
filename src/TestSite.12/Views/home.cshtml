@@ -1,16 +1,16 @@
 ﻿@inherits UmbracoViewPage<Home>
 
 @{
-	Layout = "_Layout";
+    Layout = "_Layout";
 }
 
 <div class="container">
-	<div class="row">
-		<div class="col">
-			<h1 class="display-1">@Model.Name</h1>
-			<div>
-				@await Html.GetBlockGridHtmlAsync(Model.GridContent)
+    <div class="row">
+        <div class="col">
+            <h1 class="display-1">@Model.Name</h1>
+            <div>
+                @await Html.GetBlockGridHtmlAsync(Model.GridContent)
             </div>
-		</div>
-	</div>
+        </div>
+    </div>
 </div>

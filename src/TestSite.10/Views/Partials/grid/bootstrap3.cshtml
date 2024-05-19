@@ -1,10 +1,11 @@
+@using System.Collections
 @using System.Web
 @using Newtonsoft.Json.Linq
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<dynamic>
+@inherits UmbracoViewPage<dynamic>
 
 @if (Model is JObject && Model?.sections is not null)
 {
-  var oneColumn = ((System.Collections.ICollection)Model.sections).Count == 1;
+    var oneColumn = ((ICollection)Model.sections).Count == 1;
 
     <div class="umb-grid">
         @if (oneColumn)
@@ -45,7 +46,8 @@
     private async Task renderRow(dynamic row, bool singleColumn)
     {
         <div @RenderElementAttributes(row)>
-            @if (singleColumn) {
+            @if (singleColumn)
+            {
                 @:<div class="container">
             }
             <div class="row clearfix">
@@ -62,9 +64,10 @@
                             }
                         </div>
                     </div>
-                 }
+                }
             </div>
-            @if (singleColumn) {
+            @if (singleColumn)
+            {
                 @:</div>
             }
         </div>
@@ -81,7 +84,7 @@
 
         if (cfg != null)
         {
-            foreach (JProperty property in cfg.Properties())
+            foreach (var property in cfg.Properties())
             {
                 var propertyValue = HttpUtility.HtmlAttributeEncode(property.Value.ToString());
                 attrs.Add(property.Name + "=\"" + propertyValue + "\"");
@@ -93,7 +96,7 @@
         if (style != null)
         {
             var cssVals = new List<string>();
-            foreach (JProperty property in style.Properties())
+            foreach (var property in style.Properties())
             {
                 var propertyValue = property.Value.ToString();
                 if (string.IsNullOrWhiteSpace(propertyValue) == false)
@@ -108,4 +111,5 @@
 
         return new HtmlString(string.Join(" ", attrs));
     }
+
 }

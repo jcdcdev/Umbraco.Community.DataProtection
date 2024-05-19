@@ -5,16 +5,14 @@ jobs:
   metadata:
     uses: jcdcdev/jcdcdev.Github.UmbracoSimpleDeploy/.github/workflows/generate-project-metadata.yml@main
   build:
-    uses: jcdcdev/jcdcdev.Github.UmbracoSimpleDeploy/.github/workflows/build-template.yml@main    
-    needs: 
+    uses: jcdcdev/jcdcdev.Github.UmbracoSimpleDeploy/.github/workflows/build-template.yml@main
+    needs:
       - metadata
     with:
       project-name: ${{ needs.metadata.outputs.project-name }}
       project-path: ${{ needs.metadata.outputs.project-path }}
-      npm-working-dir: ${{ needs.metadata.outputs.npm-working-dir }}
-      npm-enabled: true
   release:
-    needs: 
+    needs:
       - build
     permissions:
       contents: write
