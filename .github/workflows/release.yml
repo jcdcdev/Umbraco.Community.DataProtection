@@ -1,0 +1,26 @@
+name: 🚀 Release
+on:
+  workflow_dispatch:
+jobs:
+  metadata:
+    uses: jcdcdev/jcdcdev.Github.UmbracoSimpleDeploy/.github/workflows/generate-project-metadata.yml@main
+  build:
+    uses: jcdcdev/jcdcdev.Github.UmbracoSimpleDeploy/.github/workflows/build-template.yml@main    
+    needs: 
+      - metadata
+    with:
+      project-name: ${{ needs.metadata.outputs.project-name }}
+      project-path: ${{ needs.metadata.outputs.project-path }}
+      npm-working-dir: ${{ needs.metadata.outputs.npm-working-dir }}
+      npm-enabled: true
+  release:
+    needs: 
+      - build
+    permissions:
+      contents: write
+    uses: jcdcdev/jcdcdev.Github.UmbracoSimpleDeploy/.github/workflows/release-template.yml@main
+    with:
+      artifact-name: ${{ needs.build.outputs.artifact-name }}
+      version: ${{ needs.build.outputs.version }}
+    secrets:
+      nuget-api-key: ${{ secrets.NUGET_API_KEY }}

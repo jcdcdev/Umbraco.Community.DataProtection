@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33020.496
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5A6D3C2C-E986-4648-ABD7-ED442746EEBC}"
+	ProjectSection(SolutionItems) = preProject
+		..\LICENSE = ..\LICENSE
+		..\.github\README.md = ..\.github\README.md
+		..\umbraco-marketplace.json = ..\umbraco-marketplace.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53BFA9E1-2748-4FEE-B3CB-98172460795D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53BFA9E1-2748-4FEE-B3CB-98172460795D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53BFA9E1-2748-4FEE-B3CB-98172460795D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53BFA9E1-2748-4FEE-B3CB-98172460795D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7912C4E8-5B1F-4171-A63A-214BBB103778}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7912C4E8-5B1F-4171-A63A-214BBB103778}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7912C4E8-5B1F-4171-A63A-214BBB103778}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7912C4E8-5B1F-4171-A63A-214BBB103778}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB758ACE-77D4-4ED6-997A-B71AA5747E5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB758ACE-77D4-4ED6-997A-B71AA5747E5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB758ACE-77D4-4ED6-997A-B71AA5747E5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB758ACE-77D4-4ED6-997A-B71AA5747E5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2060F159-0A7B-4484-A6C2-1995A3EF19B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2060F159-0A7B-4484-A6C2-1995A3EF19B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2060F159-0A7B-4484-A6C2-1995A3EF19B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2060F159-0A7B-4484-A6C2-1995A3EF19B4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6F07004F-9903-4AEB-9ED0-BE57A0326D20}
+	EndGlobalSection
+EndGlobal
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Github", "Github", "{5830A86F-99DA-459D-82FD-A24613A9F22F}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\release.yml = ..\.github\workflows\release.yml
+		..\.github\workflows\build.yml = ..\.github\workflows\build.yml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSite.10", "TestSite.10\TestSite.10.csproj", "{53BFA9E1-2748-4FEE-B3CB-98172460795D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSite.12", "TestSite.12\TestSite.12.csproj", "{7912C4E8-5B1F-4171-A63A-214BBB103778}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSite.13", "TestSite.13\TestSite.13.csproj", "{DB758ACE-77D4-4ED6-997A-B71AA5747E5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Umbraco.Community.DataProtection", "Umbraco.Community.DataProtection\Umbraco.Community.DataProtection.csproj", "{2060F159-0A7B-4484-A6C2-1995A3EF19B4}"
+EndProject

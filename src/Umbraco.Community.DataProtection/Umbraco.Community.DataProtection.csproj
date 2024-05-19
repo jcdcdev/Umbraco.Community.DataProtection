@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+    <PropertyGroup>
+        <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+        <LangVersion>10</LangVersion>
+        <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <StaticWebAssetBasePath>/</StaticWebAssetBasePath>
+        <ContentTargetFolders>.</ContentTargetFolders>
+        <Product>Umbraco.Community.DataProtection</Product>
+        <PackageId>Umbraco.Community.DataProtection</PackageId>
+        <Title>Simple Data Protection</Title>
+        <Description>Simple ASP.NET Core Data Protection for Umbraco CMS.</Description>
+        <PackageTags>umbraco;umbraco-marketplace</PackageTags>
+        <Authors>jcdcdev</Authors>
+        <Copyright>$([System.DateTime]::UtcNow.ToString(`yyyy`)) © James Carter</Copyright>
+        <PackageProjectUrl>https://jcdcdev.dev/umbraco-packages/data-protection</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/jcdcdev/Umbraco.Community.DataProtection</RepositoryUrl>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <RepositoryType>git</RepositoryType>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageIcon>images\icon.png</PackageIcon>
+        <NuGetAuditMode>all</NuGetAuditMode>
+        <NuGetAuditLevel>high</NuGetAuditLevel>
+        <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    </PropertyGroup>
+    <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
+        <PackageReference Include="Umbraco.Cms.Core" Version="[10.4.0,11.0.0)"/>
+        <PackageReference Include="Umbraco.Cms.Infrastructure" Version="[10.4.0,11.0.0)"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
+        <PackageReference Include="Umbraco.Cms.Core" Version="[11.0.0,13.0.0)"/>
+        <PackageReference Include="Umbraco.Cms.Infrastructure" Version="[11.0.0,13.0.0)"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+        <PackageReference Include="Umbraco.Cms.Core" Version="[13.0.0,14.0.0)"/>
+        <PackageReference Include="Umbraco.Cms.Infrastructure" Version="[13.0.0,14.0.0)"/>
+    </ItemGroup>
+
+    <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+        <PackageVersion>$([System.DateTime]::UtcNow.ToString(`yyyy`).TrimStart(`0`)).$([System.DateTime]::UtcNow.ToString(`MM`).TrimStart(`0`))$([System.DateTime]::UtcNow.ToString(`dd`).TrimStart(`0`)).$([System.DateTime]::UtcNow.ToString(`Hmm`).TrimStart(`0`))-alpha$([System.DateTime]::UtcNow.ToString(`ss`).TrimStart(`.`))</PackageVersion>
+        <Version>$(PackageVersion)</Version>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\..\docs\icon.png" Pack="true" PackagePath="images\icon.png"/>
+        <None Include="..\..\.github\README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
+</Project>
