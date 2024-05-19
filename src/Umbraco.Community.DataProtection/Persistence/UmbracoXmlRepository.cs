@@ -9,8 +9,8 @@ namespace Umbraco.Community.DataProtection.Persistence;
 
 public class UmbracoXmlRepository : IXmlRepository
 {
-    private readonly IScopeProvider _scopeProvider;
     private readonly ILogger<UmbracoXmlRepository> _logger;
+    private readonly IScopeProvider _scopeProvider;
 
     public UmbracoXmlRepository(IScopeProvider scopeProvider, ILogger<UmbracoXmlRepository> logger)
     {
