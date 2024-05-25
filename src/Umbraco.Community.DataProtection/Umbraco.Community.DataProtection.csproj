@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <LangVersion>10</LangVersion>
         <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
         <Nullable>enable</Nullable>
@@ -16,7 +16,7 @@
         <Copyright>$([System.DateTime]::UtcNow.ToString(`yyyy`)) © James Carter</Copyright>
         <PackageProjectUrl>https://jcdc.dev/umbraco-packages/data-protection</PackageProjectUrl>
         <RepositoryUrl>https://github.com/jcdcdev/Umbraco.Community.DataProtection</RepositoryUrl>
-        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageReadmeFile>README_nuget.md</PackageReadmeFile>
         <RepositoryType>git</RepositoryType>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageIcon>images\icon.png</PackageIcon>
@@ -24,13 +24,13 @@
 
     <ItemGroup>
         <FrameworkReference Include="Microsoft.AspNetCore.App"/>
-        <PackageReference Include="jcdcdev.Umbraco.Core" Version="10.1.0"/>
-        <PackageReference Include="Umbraco.Cms.Core" Version="[10.4.0,11.0.0)"/>
-        <PackageReference Include="Umbraco.Cms.Infrastructure" Version="[10.4.0,11.0.0)"/>
+        <PackageReference Include="jcdcdev.Umbraco.Core" Version="14.0.0-alpha0003"/>
+        <PackageReference Include="Umbraco.Cms.Core" Version="14.0.0-rc4"/>
+        <PackageReference Include="Umbraco.Cms.Infrastructure" Version="14.0.0-rc4"/>
     </ItemGroup>
 
     <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-        <Major>UMBRACO_VERSION</Major>
+        <Major>14</Major>
         <Minor>$([System.DateTime]::UtcNow.ToString(`yyyy`))</Minor>
         <Patch>$([System.DateTime]::UtcNow.ToString(`MMdd`).TrimStart(`0`))</Patch>
         <Suffix>-alpha-$([System.DateTime]::UtcNow.ToString(`Hmm-ss`).TrimStart(`.`))</Suffix>
