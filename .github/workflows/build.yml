@@ -7,9 +7,13 @@ jobs:
   metadata:
     uses: jcdcdev/jcdcdev.Github.UmbracoSimpleDeploy/.github/workflows/generate-project-metadata.yml@main
   build:
-    uses: jcdcdev/jcdcdev.Github.UmbracoSimpleDeploy/.github/workflows/build-template.yml@main
+    runs-on: ubuntu-latest
     needs:
       - metadata
-    with:
-      project-name: ${{ needs.metadata.outputs.project-name }}
-      project-path: ${{ needs.metadata.outputs.project-path }}
+    steps:
+      - name: Build
+        uses: jcdcdev/jcdcdev.Umbraco.Github.Build@main
+        with:
+          project-name: ${{ needs.metadata.outputs.project-name}}
+          project-path: ${{ needs.metadata.outputs.project-path }}
+          umbraco-version: UMBRACO_VERSION

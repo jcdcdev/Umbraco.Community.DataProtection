@@ -1,24 +1,29 @@
 name: 🚀 Release
 on:
   workflow_dispatch:
+  pull_request:
+    types: [ closed ]
 jobs:
   metadata:
     uses: jcdcdev/jcdcdev.Github.UmbracoSimpleDeploy/.github/workflows/generate-project-metadata.yml@main
-  build:
-    uses: jcdcdev/jcdcdev.Github.UmbracoSimpleDeploy/.github/workflows/build-template.yml@main
-    needs:
-      - metadata
-    with:
-      project-name: ${{ needs.metadata.outputs.project-name }}
-      project-path: ${{ needs.metadata.outputs.project-path }}
   release:
-    needs:
-      - build
+    runs-on: ubuntu-latest
     permissions:
       contents: write
-    uses: jcdcdev/jcdcdev.Github.UmbracoSimpleDeploy/.github/workflows/release-template.yml@main
-    with:
-      artifact-name: ${{ needs.build.outputs.artifact-name }}
-      version: ${{ needs.build.outputs.version }}
-    secrets:
-      nuget-api-key: ${{ secrets.NUGET_API_KEY }}
+    needs:
+      - metadata
+    steps:
+      - name: Build
+        id: build
+        uses: jcdcdev/jcdcdev.Umbraco.GitHub.Build@main
+        with:
+          project-name: ${{ needs.metadata.outputs.project-name}}
+          project-path: ${{ needs.metadata.outputs.project-path }}
+          umbraco-version: UMBRACO_VERSION
+      - name: Release
+        uses: jcdcdev/jcdcdev.Umbraco.GitHub.Release@main
+        with:
+          artifact-name: ${{ steps.build.outputs.artifact-name }}
+          version: ${{ steps.build.outputs.version }}
+          nuget-api-key: ${{ secrets.NUGET_API_KEY }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}

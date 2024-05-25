@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
     <PropertyGroup>
-        <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+        <TargetFramework>net6.0</TargetFramework>
         <LangVersion>10</LangVersion>
         <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
         <Nullable>enable</Nullable>
@@ -20,39 +20,27 @@
         <RepositoryType>git</RepositoryType>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageIcon>images\icon.png</PackageIcon>
-        <NuGetAuditMode>all</NuGetAuditMode>
-        <NuGetAuditLevel>high</NuGetAuditLevel>
-        <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     </PropertyGroup>
 
     <ItemGroup>
         <FrameworkReference Include="Microsoft.AspNetCore.App"/>
-        <PackageReference Include="jcdcdev.Umbraco.Core" Version="0.3.1"/>
-    </ItemGroup>
-
-    <ItemGroup Condition="'$(TargetFramework)' == 'net6.0'">
+        <PackageReference Include="jcdcdev.Umbraco.Core" Version="10.1.0"/>
         <PackageReference Include="Umbraco.Cms.Core" Version="[10.4.0,11.0.0)"/>
         <PackageReference Include="Umbraco.Cms.Infrastructure" Version="[10.4.0,11.0.0)"/>
     </ItemGroup>
 
-    <ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
-        <PackageReference Include="Umbraco.Cms.Core" Version="[11.0.0,13.0.0)"/>
-        <PackageReference Include="Umbraco.Cms.Infrastructure" Version="[11.0.0,13.0.0)"/>
-    </ItemGroup>
-
-    <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
-        <PackageReference Include="Umbraco.Cms.Core" Version="[13.0.0,14.0.0)"/>
-        <PackageReference Include="Umbraco.Cms.Infrastructure" Version="[13.0.0,14.0.0)"/>
-    </ItemGroup>
-
     <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-        <PackageVersion>$([System.DateTime]::UtcNow.ToString(`yyyy`).TrimStart(`0`)).$([System.DateTime]::UtcNow.ToString(`MM`).TrimStart(`0`))$([System.DateTime]::UtcNow.ToString(`dd`).TrimStart(`0`)).$([System.DateTime]::UtcNow.ToString(`Hmm`).TrimStart(`0`))-alpha$([System.DateTime]::UtcNow.ToString(`ss`).TrimStart(`.`))</PackageVersion>
+        <Major>UMBRACO_VERSION</Major>
+        <Minor>$([System.DateTime]::UtcNow.ToString(`yyyy`))</Minor>
+        <Patch>$([System.DateTime]::UtcNow.ToString(`MMdd`).TrimStart(`0`))</Patch>
+        <Suffix>-alpha-$([System.DateTime]::UtcNow.ToString(`Hmm-ss`).TrimStart(`.`))</Suffix>
+        <PackageVersion>$(Major).$(Minor).$(Patch)$(Suffix)</PackageVersion>
         <Version>$(PackageVersion)</Version>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
 
     <ItemGroup>
         <None Include="..\..\docs\icon.png" Pack="true" PackagePath="images\icon.png"/>
-        <None Include="..\..\.github\README.md" Pack="true" PackagePath="\"/>
+        <None Include="..\..\docs\README_nuget.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
 </Project>

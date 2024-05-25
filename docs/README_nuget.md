@@ -1,5 +1,6 @@
 # Umbraco.Community.DataProtection
 
+[![Documentation](https://img.shields.io/badge/Docs-Quickstart-394933?style=flat&logo=github)](https://github.com/jcdcdev/Umbraco.Community.DataProtection/tree/main?tab=readme-ov-file#quick-start)
 [![Umbraco Marketplace](https://img.shields.io/badge/Umbraco-Marketplace-%233544B1?style=flat&logo=umbraco)](https://marketplace.umbraco.com/package/umbraco.community.dataprotection)
 [![GitHub License](https://img.shields.io/github/license/jcdcdev/Umbraco.Community.DataProtection?color=8AB803&label=License&logo=github)](https://github.com/jcdcdev/Umbraco.Community.DataProtection/blob/main/LICENSE)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/Umbraco.Community.DataProtection?color=cc9900&label=Downloads&logo=nuget)](https://www.nuget.org/packages/Umbraco.Community.DataProtection/)
