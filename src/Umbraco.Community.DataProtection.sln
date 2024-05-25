@@ -22,14 +22,6 @@ Global
 		{53BFA9E1-2748-4FEE-B3CB-98172460795D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53BFA9E1-2748-4FEE-B3CB-98172460795D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53BFA9E1-2748-4FEE-B3CB-98172460795D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7912C4E8-5B1F-4171-A63A-214BBB103778}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7912C4E8-5B1F-4171-A63A-214BBB103778}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7912C4E8-5B1F-4171-A63A-214BBB103778}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7912C4E8-5B1F-4171-A63A-214BBB103778}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DB758ACE-77D4-4ED6-997A-B71AA5747E5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DB758ACE-77D4-4ED6-997A-B71AA5747E5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DB758ACE-77D4-4ED6-997A-B71AA5747E5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DB758ACE-77D4-4ED6-997A-B71AA5747E5E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2060F159-0A7B-4484-A6C2-1995A3EF19B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2060F159-0A7B-4484-A6C2-1995A3EF19B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2060F159-0A7B-4484-A6C2-1995A3EF19B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -49,10 +41,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Github", "Github", "{5830A8
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSite.10", "TestSite.10\TestSite.10.csproj", "{53BFA9E1-2748-4FEE-B3CB-98172460795D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSite.12", "TestSite.12\TestSite.12.csproj", "{7912C4E8-5B1F-4171-A63A-214BBB103778}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSite.13", "TestSite.13\TestSite.13.csproj", "{DB758ACE-77D4-4ED6-997A-B71AA5747E5E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Umbraco.Community.DataProtection", "Umbraco.Community.DataProtection\Umbraco.Community.DataProtection.csproj", "{2060F159-0A7B-4484-A6C2-1995A3EF19B4}"
 EndProject

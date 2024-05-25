@@ -19,7 +19,7 @@ jobs:
         with:
           project-name: ${{ needs.metadata.outputs.project-name}}
           project-path: ${{ needs.metadata.outputs.project-path }}
-          umbraco-version: UMBRACO_VERSION
+          umbraco-version: 10
       - name: Release
         uses: jcdcdev/jcdcdev.Umbraco.GitHub.Release@main
         with:
