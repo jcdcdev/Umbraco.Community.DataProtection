@@ -12,7 +12,6 @@ public static class UmbracoBuilderExtensions
 {
     public static IDataProtectionBuilder AddUmbracoDataProtection(this IUmbracoBuilder builder, string? applicationDiscriminator = null, Action<KeyManagementOptions>? configureOptions = null)
     {
-        builder.ManifestFilters().Append<ManifestFilter>();
         builder.PackageMigrationPlans()!.Add<MigrationPlan>();
         builder.Services.AddSingleton<UmbracoXmlRepository>();
         builder.Services.AddSingleton<IConfigureOptions<KeyManagementOptions>>(services =>
