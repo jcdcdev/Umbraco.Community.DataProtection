@@ -1,13 +1,22 @@
-﻿@inherits UmbracoViewPage<Home>
-
+﻿@using Umbraco.Community.DataProtection.Persistence
+@inherits UmbracoViewPage<Home>
+@inject UmbracoXmlRepository XmlRepository
 @{
     Layout = "_Layout";
+    var keys = XmlRepository.GetAllElements();
 }
 
 <div class="container">
     <div class="row">
         <div class="col">
             <h1 class="display-1">@Model.Name</h1>
+            <div>
+                <h2>XML Keys</h2>
+                @foreach (var key in keys)
+                {
+                    <pre><code>@key</code></pre>
+                }
+            </div>
             <div>
                 @await Html.GetBlockGridHtmlAsync(Model.GridContent)
             </div>
