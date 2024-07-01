@@ -7,22 +7,13 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Community.DataProtection.Persistence;
 
-public class UmbracoXmlRepository : IXmlRepository
+public class UmbracoXmlRepository(IScopeProvider scopeProvider, ILogger<UmbracoXmlRepository> logger) : IXmlRepository
 {
-    private readonly ILogger<UmbracoXmlRepository> _logger;
-    private readonly IScopeProvider _scopeProvider;
-
-    public UmbracoXmlRepository(IScopeProvider scopeProvider, ILogger<UmbracoXmlRepository> logger)
-    {
-        _scopeProvider = scopeProvider;
-        _logger = logger;
-    }
-
     public IReadOnlyCollection<XElement> GetAllElements()
     {
         try
         {
-            using var scope = _scopeProvider.CreateScope();
+            using var scope = scopeProvider.CreateScope();
             var sql = scope.SqlContext.Sql().SelectAll().From<DataProtectionKey>();
             var results = scope.Database.Fetch<DataProtectionKey>(sql);
             var output = results.Select(x => XElement.Parse(x.Xml!)).WhereNotNull().ToList().AsReadOnly();
@@ -31,7 +22,7 @@ public class UmbracoXmlRepository : IXmlRepository
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error getting all elements");
+            logger.LogError(ex, "Error getting all elements");
             return Array.Empty<XElement>();
         }
     }
@@ -40,7 +31,7 @@ public class UmbracoXmlRepository : IXmlRepository
     {
         try
         {
-            using var scope = _scopeProvider.CreateScope(autoComplete: false);
+            using var scope = scopeProvider.CreateScope(autoComplete: false);
             var key = new DataProtectionKey
             {
                 FriendlyName = friendlyName,
@@ -51,7 +42,7 @@ public class UmbracoXmlRepository : IXmlRepository
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error storing element");
+            logger.LogError(ex, "Error storing element");
         }
     }
 }

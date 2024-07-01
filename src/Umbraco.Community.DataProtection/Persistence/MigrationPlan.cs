@@ -2,12 +2,8 @@
 
 namespace Umbraco.Community.DataProtection.Persistence;
 
-public class MigrationPlan : PackageMigrationPlan
+public class MigrationPlan() : PackageMigrationPlan(Constants.PackageId)
 {
-    public MigrationPlan() : base(Constants.PackageId)
-    {
-    }
-
     protected override void DefinePlan()
     {
         To<DataProtectionMigration>(nameof(DataProtectionMigration));
