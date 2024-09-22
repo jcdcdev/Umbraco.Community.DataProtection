@@ -1,0 +1,77 @@
+name: 🔃 Create PRs
+on:
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: 'Run the workflow without creating PRs'
+        required: false
+        default: false
+        type: boolean
+  schedule:
+    - cron: '0 0 * * *'
+jobs:
+  get-branches:
+    outputs:
+      branches: ${{ steps.get-branches.outputs.branches }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Get branches
+        id: get-branches
+        shell: pwsh
+        run: |
+          $branches = git branch -r --format="%(refname:short)" | ForEach-Object { $_.Trim() -replace "^origin/", "" }
+          # filter only branches that start with dev/
+          $branches = $branches | Where-Object { $_ -match "^dev/" }
+          $branchJson = ConvertTo-Json @($branches) -Compress
+          Write-Host "branches=$branchJson"
+          echo "branches=$branchJson" >> $env:GITHUB_OUTPUT
+  create-pr:
+    needs: get-branches
+    strategy:
+      max-parallel: 1
+      matrix:
+          branch: ${{fromJson(needs.get-branches.outputs.branches)}}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set Env
+        run: |
+          TARGET=$(echo ${{ matrix.branch }} | sed 's/dev\///')
+          SOURCE=${{ matrix.branch }}
+
+          if [ -z "$TARGET" ]; then
+            echo "TARGET is empty"
+            exit 1
+          fi
+        
+          if [ -z "$SOURCE" ]; then
+            echo "SOURCE is empty"
+            exit 1
+          fi
+
+          if [ "$SOURCE" == "$TARGET" ]; then
+            echo "SOURCE is the same as TARGET"
+            exit 1
+          fi
+
+          echo "SOURCE=$SOURCE"
+          echo "TARGET=$TARGET"
+          echo "SOURCE=$SOURCE" >> $GITHUB_ENV
+          echo "TARGET=$TARGET" >> $GITHUB_ENV
+      - name: Run the Action
+        if: ${{ github.event.inputs.dry-run == 'false' }}
+        uses: devops-infra/action-pull-request@v0.5.5
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          source_branch: ${{ env.SOURCE }}
+          target_branch: ${{ env.TARGET }}
+          title: "Merge ${{ env.SOURCE }} into ${{ env.TARGET }}"
+          reviewer: ${{ github.repository_owner }}
+          assignee: ${{ github.repository_owner }}
