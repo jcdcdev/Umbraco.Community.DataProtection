@@ -66,10 +66,10 @@ jobs:
           echo "SOURCE=$SOURCE" >> $GITHUB_ENV
           echo "TARGET=$TARGET" >> $GITHUB_ENV
       - name: Run the Action
-        if: ${{ github.event.inputs.dry-run == 'false' }}
+        if: ${{ github.event.inputs.dry-run == 'false' }} || ${{ github.event_name == 'schedule' }}
         uses: devops-infra/action-pull-request@v0.5.5
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.JCDC_BOT_TOKEN}}
           source_branch: ${{ env.SOURCE }}
           target_branch: ${{ env.TARGET }}
           title: "Merge ${{ env.SOURCE }} into ${{ env.TARGET }}"
