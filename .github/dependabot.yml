@@ -2,7 +2,7 @@ version: 2
 updates:
   - package-ecosystem: nuget
     assignees:
-      - "${{ github.repository_owner }}"
+      - "jcdcdev"
     directory: "/"
     schedule:
       interval: "daily"
@@ -14,7 +14,7 @@ updates:
 
   - package-ecosystem: npm
     assignees:
-      - "${{ github.repository_owner }}"
+      - "jcdcdev"
     directory: "/"
     schedule:
       interval: "daily"
