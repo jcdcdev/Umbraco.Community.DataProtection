@@ -8,7 +8,7 @@ on:
         default: false
         type: boolean
   schedule:
-    - cron: '0 0 * * *'
+    - cron: '0 2 * * *'
 jobs:
   get-branches:
     outputs:
