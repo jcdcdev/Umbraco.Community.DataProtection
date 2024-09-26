@@ -1,9 +1,9 @@
-name: 🔃 Create PRs
+name: 📤 Create PRs
 on:
   workflow_dispatch:
     inputs:
       dry-run:
-        description: 'Run the workflow without creating PRs'
+        description: "Dry run: Run the workflow without creating a Pull Request"
         required: false
         default: false
         type: boolean
@@ -36,12 +36,10 @@ jobs:
       matrix:
           branch: ${{fromJson(needs.get-branches.outputs.branches)}}
     runs-on: ubuntu-latest
+    env:
+      DRY_RUN: ${{ contains(github.event.inputs.dry-run, 'true') }}
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Set Env
+      - name: Set Variables
         run: |
           TARGET=$(echo ${{ matrix.branch }} | sed 's/dev\///')
           SOURCE=${{ matrix.branch }}
@@ -56,22 +54,16 @@ jobs:
             exit 1
           fi
 
-          if [ "$SOURCE" == "$TARGET" ]; then
-            echo "SOURCE is the same as TARGET"
-            exit 1
-          fi
-
           echo "SOURCE=$SOURCE"
           echo "TARGET=$TARGET"
+
           echo "SOURCE=$SOURCE" >> $GITHUB_ENV
           echo "TARGET=$TARGET" >> $GITHUB_ENV
-      - name: Run the Action
-        if: ${{ github.event.inputs.dry-run == 'false' }} || ${{ github.event_name == 'schedule' }}
-        uses: devops-infra/action-pull-request@v0.5.5
+      - name: Create Pull Request
+        id: create-pull-request 
+        uses: jcdcdev/jcdcdev.GitHub.CreatePullRequest@main
         with:
-          github_token: ${{ secrets.JCDC_BOT_TOKEN}}
-          source_branch: ${{ env.SOURCE }}
-          target_branch: ${{ env.TARGET }}
-          title: "Merge ${{ env.SOURCE }} into ${{ env.TARGET }}"
-          reviewer: ${{ github.repository_owner }}
-          assignee: ${{ github.repository_owner }}
+          source-branch: ${{ env.SOURCE }}
+          target-branch: ${{ env.TARGET }}
+          dry-run: ${{ env.DRY_RUN }}
+          github-token: ${{ secrets.JCDC_BOT_TOKEN }}
