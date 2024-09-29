@@ -4,21 +4,18 @@ on:
   pull_request:
     types: [ closed ]
 jobs:
-  metadata:
-    uses: jcdcdev/jcdcdev.Github.UmbracoSimpleDeploy/.github/workflows/generate-project-metadata.yml@main
   release:
+    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    needs:
-      - metadata
     steps:
       - name: Build
         id: build
         uses: jcdcdev/jcdcdev.Umbraco.GitHub.Build@main
         with:
-          project-name: ${{ needs.metadata.outputs.project-name}}
-          project-path: ${{ needs.metadata.outputs.project-path }}
+          project-name: Umbraco.Community.DataProtection
+          project-path: src/Umbraco.Community.DataProtection/Umbraco.Community.DataProtection.csproj
           umbraco-version: 14
       - name: Release
         uses: jcdcdev/jcdcdev.Umbraco.GitHub.Release@main
