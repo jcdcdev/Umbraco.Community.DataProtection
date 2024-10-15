@@ -24,7 +24,7 @@
 
     <ItemGroup>
         <FrameworkReference Include="Microsoft.AspNetCore.App"/>
-        <PackageReference Include="jcdcdev.Umbraco.Core" Version="15.0.0-alpha0001"/>
+        <PackageReference Include="jcdcdev.Umbraco.Core" Version="[15.0.0-alpha0002,15.0.0-alpha9999)"/>
         <PackageReference Include="Umbraco.Cms.Core" Version="[15.0.0-rc1,15.0.0-rc999)"/>
         <PackageReference Include="Umbraco.Cms.Infrastructure" Version="[15.0.0-rc1,15.0.0-rc999)"/>
     </ItemGroup>
