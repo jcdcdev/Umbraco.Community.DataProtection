@@ -23,10 +23,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <FrameworkReference Include="Microsoft.AspNetCore.App"/>
-        <PackageReference Include="jcdcdev.Umbraco.Core" Version="15.0.0-alpha0002"/>
-        <PackageReference Include="Umbraco.Cms.Core" Version="15.0.0-rc2"/>
-        <PackageReference Include="Umbraco.Cms.Infrastructure" Version="15.0.0-rc2"/>
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
+        <PackageReference Include="jcdcdev.Umbraco.Core" Version="15.0.0-alpha0003" />
+        <PackageReference Include="Umbraco.Cms.Core" Version="15.0.0-rc2" />
+        <PackageReference Include="Umbraco.Cms.Infrastructure" Version="15.0.0-rc2" />
     </ItemGroup>
 
     <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
@@ -40,7 +40,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Include="..\..\docs\icon.png" Pack="true" PackagePath="images\icon.png"/>
-        <None Include="..\..\docs\README_nuget.md" Pack="true" PackagePath="\"/>
+        <None Include="..\..\docs\icon.png" Pack="true" PackagePath="images\icon.png" />
+        <None Include="..\..\docs\README_nuget.md" Pack="true" PackagePath="\" />
     </ItemGroup>
 </Project>

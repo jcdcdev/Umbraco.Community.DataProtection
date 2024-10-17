@@ -161,10 +161,10 @@
       },
       "jcdcdev.Umbraco.Core": {
         "type": "Transitive",
-        "resolved": "15.0.0-alpha0002",
-        "contentHash": "FLbmZYAg5ioIMJ0DMmj4VNxfLtR3FXbbwwM+qMv2cl24Wa9b5h+iX+pzW3ogneoMycFs9E8ASWI21i5cJBPZQQ==",
+        "resolved": "15.0.0-alpha0003",
+        "contentHash": "IwGyIPb9dvDkHeyw9NBJdZuU4Q1Ef7A4AILiSiitJh/KTb74jtKieulP4oJ0qRKBcB2ZL3BXl/pNUeEfNIJIzg==",
         "dependencies": {
-          "Umbraco.Cms.Web.Common": "[15.0.0-rc1, 15.0.0-rc999)"
+          "Umbraco.Cms.Web.Common": "15.0.0-rc2"
         }
       },
       "Json.More.Net": {
@@ -2941,7 +2941,7 @@
         "dependencies": {
           "Umbraco.Cms.Core": "[15.0.0-rc2, )",
           "Umbraco.Cms.Infrastructure": "[15.0.0-rc2, )",
-          "jcdcdev.Umbraco.Core": "[15.0.0-alpha0002, )"
+          "jcdcdev.Umbraco.Core": "[15.0.0-alpha0003, )"
         }
       }
     }
