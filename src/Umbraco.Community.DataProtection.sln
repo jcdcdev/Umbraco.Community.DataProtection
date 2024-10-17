@@ -42,5 +42,5 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Github", "Github", "{5830A8
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Umbraco.Community.DataProtection", "Umbraco.Community.DataProtection\Umbraco.Community.DataProtection.csproj", "{2060F159-0A7B-4484-A6C2-1995A3EF19B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSite.14", "TestSite.14\TestSite.14.csproj", "{5FD6A94B-819D-4A25-848C-3B2B55412305}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSite", "TestSite\TestSite.csproj", "{5FD6A94B-819D-4A25-848C-3B2B55412305}"
 EndProject
