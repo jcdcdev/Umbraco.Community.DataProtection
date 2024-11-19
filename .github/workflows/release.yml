@@ -16,7 +16,8 @@ jobs:
         with:
           project-name: Umbraco.Community.DataProtection
           project-path: src/Umbraco.Community.DataProtection/Umbraco.Community.DataProtection.csproj
-          umbraco-version: 14
+          umbraco-version: 15
+          dotnet-version: "9"
       - name: Release
         uses: jcdcdev/jcdcdev.Umbraco.GitHub.Release@main
         with:
