@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Umbraco.Cms.Core.DependencyInjection;
+using Umbraco.Cms.Infrastructure.Manifest;
 using Umbraco.Community.DataProtection.Persistence;
 using Umbraco.Extensions;
 
@@ -24,6 +25,7 @@ public static class UmbracoBuilderExtensions
                 configureOptions?.Invoke(options);
             });
         });
+        builder.Services.AddSingleton<IPackageManifestReader, PackageManifestReader>();
 
         return builder.Services.AddDataProtection(x =>
         {
