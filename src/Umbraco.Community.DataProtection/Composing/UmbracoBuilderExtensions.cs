@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Umbraco.Cms.Core.DependencyInjection;
+using Umbraco.Cms.Infrastructure.Manifest;
 using Umbraco.Community.DataProtection.Persistence;
 using Umbraco.Extensions;
 
@@ -12,6 +13,7 @@ public static class UmbracoBuilderExtensions
 {
     public static IDataProtectionBuilder AddUmbracoDataProtection(this IUmbracoBuilder builder, string? applicationDiscriminator = null, Action<KeyManagementOptions>? configureOptions = null)
     {
+        builder.Services.AddSingleton<IPackageManifestReader, PackageManifestReader>();
         builder.PackageMigrationPlans()!.Add<MigrationPlan>();
         builder.Services.AddSingleton<UmbracoXmlRepository>();
         builder.Services.AddSingleton<IConfigureOptions<KeyManagementOptions>>(services =>

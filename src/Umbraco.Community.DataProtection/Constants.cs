@@ -2,8 +2,7 @@ namespace Umbraco.Community.DataProtection;
 
 public static class Constants
 {
-    public const string PackageId = "Umbraco.Community.DataProtection";
-    public const string PackageName = "Simple Data Protection";
+    public const string PackageName = "Umbraco.Community.DataProtection";
 
     public static class Tables
     {
