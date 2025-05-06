@@ -1,0 +1,50 @@
+name: 📄 Update README
+on:
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: "Dry run: Run the workflow without making any changes"
+        required: false
+        default: false
+        type: boolean
+  schedule:
+    - cron: '30 23,11 * * *'
+jobs:
+  get-refs:
+    runs-on: ubuntu-latest
+    outputs:
+      refs: ${{ steps.get-refs.outputs.refs }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Get refs
+        id: get-refs
+        shell: pwsh
+        run: |
+          $refs = git branch -r --list 'origin/dev/v*' | ForEach-Object { $_.Trim()  -replace 'origin/', '' } | Sort-Object -Unique | ConvertTo-Json -Compress         
+          echo "refs=$refs" >> $env:GITHUB_OUTPUT
+  update:
+    runs-on: ubuntu-latest
+    needs: get-refs
+    env:
+      DRY_RUN: ${{ github.event.inputs.dry-run }}
+      PROJECT_NAME: Umbraco.Community.DataProtection
+      README_FILEPATH: ./.github/README.md
+      NUGET_README_FILEPATH: ./docs/README_nuget.md
+    strategy:
+      max-parallel: 1
+      matrix:
+          ref:  ${{fromJson(needs.get-refs.outputs.refs) }}
+    steps:
+      - name: Update README
+        uses: jcdcdev/jcdcdev.Umbraco.GitHub.PackageReadme@main
+        with:
+          dry-run: ${{ env.DRY_RUN }}
+          project-name: ${{ env.PROJECT_NAME }}
+          readme-filepath: ${{ env.README_FILEPATH }}
+          nuget-readme-filepath: ${{ env.NUGET_README_FILEPATH }}
+          branch: ${{ matrix.ref }}
+          api-key: ${{ secrets.SECURITY_POLICY_API_KEY }}
+      
