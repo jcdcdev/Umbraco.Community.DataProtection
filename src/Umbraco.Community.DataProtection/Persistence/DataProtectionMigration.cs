@@ -19,14 +19,16 @@ public class DataProtectionMigration(
     IContentTypeBaseServiceProvider contentTypeBaseServiceProvider,
     IMigrationContext context,
     IOptions<PackageMigrationSettings> packageMigrationsSettings)
-    : PackageMigrationBase(packagingService, mediaService, mediaFileManager, mediaUrlGenerators, shortStringHelper, contentTypeBaseServiceProvider,
+    : AsyncPackageMigrationBase(packagingService, mediaService, mediaFileManager, mediaUrlGenerators, shortStringHelper, contentTypeBaseServiceProvider,
         context, packageMigrationsSettings)
 {
-    protected override void Migrate()
+    protected override Task MigrateAsync()
     {
         if (!TableExists(Constants.Tables.DataProtectionKeys))
         {
             Create.Table<DataProtectionKey>().Do();
         }
+
+        return Task.CompletedTask;
     }
 }
