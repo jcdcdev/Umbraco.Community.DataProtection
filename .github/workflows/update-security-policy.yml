@@ -23,7 +23,7 @@ jobs:
         id: get-refs
         shell: pwsh
         run: |
-          $refs = git branch -r --list 'origin/v*' | ForEach-Object { $_.Trim()  -replace 'origin/', '' } | Sort-Object -Unique | ConvertTo-Json -Compress         
+          $refs = git branch -r --list 'origin/dev/v*' | ForEach-Object { $_.Trim()  -replace 'origin/', '' } | Sort-Object -Unique | ConvertTo-Json -Compress         
           echo "refs=$refs" >> $env:GITHUB_OUTPUT
   update:
     runs-on: ubuntu-latest
