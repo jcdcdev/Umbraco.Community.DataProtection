@@ -27,9 +27,9 @@
         <!--        <PackageReference Include="jcdcdev.Umbraco.Core" Version="[16.0.0,17.0.0)" />-->
         <!--        <PackageReference Include="Umbraco.Cms.Core" Version="[16.0.0,17.0.0)" />-->
         <!--        <PackageReference Include="Umbraco.Cms.Infrastructure" Version="[16.0.0,17.0.0)" />-->
-        <PackageReference Include="jcdcdev.Umbraco.Core" Version="16.0.0-alpha0001"/>
-        <PackageReference Include="Umbraco.Cms.Core" Version="16.0.0-rc"/>
-        <PackageReference Include="Umbraco.Cms.Infrastructure" Version="16.0.0-rc"/>
+        <PackageReference Include="jcdcdev.Umbraco.Core" Version="16.0.0-alpha0007" />
+        <PackageReference Include="Umbraco.Cms.Core" Version="16.0.0-rc5"/>
+        <PackageReference Include="Umbraco.Cms.Infrastructure" Version="16.0.0-rc5"/>
     </ItemGroup>
 
     <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
