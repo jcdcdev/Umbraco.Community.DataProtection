@@ -12,6 +12,7 @@ The following table outlines the versions of the project that are currently supp
 | [10.x](https://github.com/jcdcdev/Umbraco.Community.DataProtection/tree/v10) | 10 | 2024-06-16 | 2025-06-16 |
 | [13.x](https://github.com/jcdcdev/Umbraco.Community.DataProtection/tree/v13) | 13 | 2025-12-14 | 2026-12-14 |
 | [15.x](https://github.com/jcdcdev/Umbraco.Community.DataProtection/tree/v15) | 15 | 2025-08-14 | 2025-11-14 |
+| [16.x](https://github.com/jcdcdev/Umbraco.Community.DataProtection/tree/v16) | 16 | 2026-03-12 | 2026-06-12 |
 ## Unsupported Versions
 
 | Package Version                                                               |  Umbraco Version  | End of Life |
