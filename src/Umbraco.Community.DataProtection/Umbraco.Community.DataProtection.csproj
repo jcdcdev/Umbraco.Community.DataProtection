@@ -23,14 +23,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <FrameworkReference Include="Microsoft.AspNetCore.App" />
-        <PackageReference Include="jcdcdev.Umbraco.Core" Version="[15.0.0,16.0.0)" />
-        <PackageReference Include="Umbraco.Cms.Core" Version="[15.0.0,16.0.0)" />
-        <PackageReference Include="Umbraco.Cms.Infrastructure" Version="[15.0.0,16.0.0)" />
+        <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+        <PackageReference Include="jcdcdev.Umbraco.Core" Version="[16.0.0,17.0.0)"/>
+        <PackageReference Include="Umbraco.Cms.Core" Version="[16.0.0,17.0.0)"/>
+        <PackageReference Include="Umbraco.Cms.Infrastructure" Version="[16.0.0,17.0.0)"/>
     </ItemGroup>
 
     <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-        <Major>15</Major>
+        <Major>16</Major>
         <Minor>$([System.DateTime]::UtcNow.ToString(`yyyy`))</Minor>
         <Patch>$([System.DateTime]::UtcNow.ToString(`MMdd`).TrimStart(`0`))</Patch>
         <Suffix>-alpha-$([System.DateTime]::UtcNow.ToString(`Hmm-ss`).TrimStart(`.`))</Suffix>
@@ -40,7 +40,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Include="..\..\docs\icon.png" Pack="true" PackagePath="images\icon.png" />
-        <None Include="..\..\docs\README_nuget.md" Pack="true" PackagePath="\" />
+        <None Include="..\..\docs\icon.png" Pack="true" PackagePath="images\icon.png"/>
+        <None Include="..\..\docs\README_nuget.md" Pack="true" PackagePath="\"/>
     </ItemGroup>
 </Project>

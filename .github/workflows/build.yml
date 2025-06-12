@@ -11,5 +11,5 @@ jobs:
         with:
           project-name: Umbraco.Community.DataProtection
           project-path: src/Umbraco.Community.DataProtection/Umbraco.Community.DataProtection.csproj
-          umbraco-version: 15
+          umbraco-version: 16
           dotnet-version: "9"
