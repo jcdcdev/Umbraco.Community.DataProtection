@@ -11,6 +11,9 @@ Simple [ASP.NET Core Data Protection](https://learn.microsoft.com/en-us/aspnet/c
 
 Data protection keys are stored in the Umbraco database.
 
+> [!NOTE]
+> Version 17 is not released yet.
+
 ## Quick Start
 
 ```csharp
