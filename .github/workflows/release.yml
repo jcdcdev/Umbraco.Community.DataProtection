@@ -13,14 +13,12 @@ jobs:
     steps:
       - name: Build
         id: build
-        uses: jcdcdev/jcdcdev.Umbraco.GitHub.Build@main
+        uses: jcdcdev/jcdcdev.Umbraco.Github.Build@v17
         with:
           project-name: Umbraco.Community.DataProtection
           project-path: src/Umbraco.Community.DataProtection/Umbraco.Community.DataProtection.csproj
-          umbraco-version: 17
-          dotnet-version: "10"
       - name: Release
-        uses: jcdcdev/jcdcdev.Umbraco.GitHub.Release@main
+        uses: jcdcdev/jcdcdev.Umbraco.GitHub.Release@v17
         with:
           artifact-name: ${{ steps.build.outputs.artifact-name }}
           version: ${{ steps.build.outputs.version }}

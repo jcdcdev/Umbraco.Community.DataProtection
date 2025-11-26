@@ -7,9 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Build
-        uses: jcdcdev/jcdcdev.Umbraco.Github.Build@main
+        uses: jcdcdev/jcdcdev.Umbraco.Github.Build@v17
         with:
           project-name: Umbraco.Community.DataProtection
           project-path: src/Umbraco.Community.DataProtection/Umbraco.Community.DataProtection.csproj
-          umbraco-version: 17
-          dotnet-version: "10"
