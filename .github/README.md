@@ -11,6 +11,11 @@ Simple [ASP.NET Core Data Protection](https://learn.microsoft.com/en-us/aspnet/c
 
 Data protection keys are stored in the Umbraco database.
 
+> [!IMPORTANT]
+> Version 13 will only receive security updates and no new features.
+
+> Please review the [security policy](https://github.com/jcdcdev/Umbraco.Community.DataProtection?tab=security-ov-file#supported-versions) for more information.
+
 ## Quick Start
 
 ```csharp
