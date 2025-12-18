@@ -1,0 +1,94 @@
+workflow: ""
+
+assembly-versioning-scheme: MajorMinorPatch
+assembly-file-versioning-scheme: MajorMinorPatch
+tag-prefix: "[vV]?"
+tag-pre-release-weight: 60000
+commit-message-incrementing: Enabled
+commit-date-format: "yyyy-MM-dd"
+mode: ContinuousDelivery
+label: "{BranchName}"
+increment: Inherit
+prevent-increment:
+  of-merged-branch: false
+  when-branch-merged: false
+  when-current-commit-tagged: true
+track-merge-target: false
+track-merge-message: true
+regex: ""
+source-branches: []
+is-source-branch-for: []
+tracks-release-branches: false
+is-release-branch: false
+is-main-branch: false
+
+ignore:
+  commits-before: 2025-11-25T00:00:00Z
+  sha: []
+  paths: []
+
+strategies:
+  - MergeMessage
+  - TaggedCommit
+  - Fallback
+
+branches:
+  vX-release:
+    regex: '^v(?<BranchName>\d+)$'
+    mode: ContinuousDeployment
+    label: ""
+    increment: Patch
+    is-main-branch: true
+    prevent-increment:
+      of-merged-branch: true
+    source-branches: []
+    pre-release-weight: 55000
+
+  dev-vX:
+    regex: '^dev\/v(?<BranchName>\d+)$'
+    mode: ContinuousDelivery
+    label: "alpha"
+    increment: Patch
+    source-branches: [vX-release]
+    is-main-branch: false
+    pre-release-weight: 30000
+
+  main:
+    regex: ^master$|^main$
+    mode: ContinuousDelivery
+    label: ""
+    increment: Patch
+    is-main-branch: true
+    prevent-increment:
+      of-merged-branch: true
+    source-branches: []
+    pre-release-weight: 55000
+
+  pull-request:
+    mode: ContinuousDelivery
+    label: PullRequest{Number}
+    increment: Inherit
+    prevent-increment:
+      of-merged-branch: false
+      when-current-commit-tagged: false
+    track-merge-message: true
+    regex: ^(pull-requests|pull|pr)[\/-](?<Number>\d*)
+    source-branches:
+      - main
+      - vX-release
+      - dev-vX
+    pre-release-weight: 30000
+
+  unknown:
+    mode: ContinuousDelivery
+    label: "{BranchName}"
+    increment: Inherit
+    prevent-increment:
+      when-current-commit-tagged: true
+    regex: (?<BranchName>.+)
+    source-branches:
+      - main
+      - vX-release
+      - dev-vX
+      - pull-request
+    pre-release-weight: 0
