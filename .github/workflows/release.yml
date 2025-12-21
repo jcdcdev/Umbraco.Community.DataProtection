@@ -2,7 +2,7 @@ name: 🚀 Release
 on:
   workflow_dispatch:
   pull_request:
-    types: [ closed ]
+    types: [closed]
 jobs:
   release:
     if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
@@ -13,14 +13,14 @@ jobs:
     steps:
       - name: Build
         id: build
-        uses: jcdcdev/jcdcdev.Umbraco.GitHub.Build@main
+        uses: jcdcdev/jcdcdev.Umbraco.GitHub.Build@v0
         with:
           project-name: Umbraco.Community.DataProtection
           project-path: src/Umbraco.Community.DataProtection/Umbraco.Community.DataProtection.csproj
           umbraco-version: 16
           dotnet-version: "9"
       - name: Release
-        uses: jcdcdev/jcdcdev.Umbraco.GitHub.Release@main
+        uses: jcdcdev/jcdcdev.Umbraco.GitHub.Release@v0
         with:
           artifact-name: ${{ steps.build.outputs.artifact-name }}
           version: ${{ steps.build.outputs.version }}
