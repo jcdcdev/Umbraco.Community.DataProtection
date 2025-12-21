@@ -11,33 +11,10 @@ Simple [ASP.NET Core Data Protection](https://learn.microsoft.com/en-us/aspnet/c
 
 Data protection keys are stored in the Umbraco database.
 
-> [!IMPORTANT]
-> Version 15 will only receive security updates and no new features.
+> [!WARNING]
+> Version 15 is no longer supported and is End of Life (EOL).
 
 > Please review the [security policy](https://github.com/jcdcdev/Umbraco.Community.DataProtection?tab=security-ov-file#supported-versions) for more information.
-
-## Quick Start
-
-```csharp
-dotnet add package Umbraco.Community.DataProtection
-```
-
-```csharp title="Composer.cs"
-using Umbraco.Cms.Core.Composing;
-using Umbraco.Cms.Core.DependencyInjection;
-
-namespace Project.Web;
-
-public class Composer : IComposer
-{
-    public void Compose(IUmbracoBuilder builder)
-    {
-        builder.AddUmbracoDataProtection();
-    }
-}
-```
-
-
 
 ## Contributing
 
