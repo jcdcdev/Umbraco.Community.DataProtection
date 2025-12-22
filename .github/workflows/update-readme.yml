@@ -8,7 +8,7 @@ on:
         default: false
         type: boolean
   schedule:
-    - cron: '30 23,11 * * *'
+    - cron: "30 23,11 * * *"
 jobs:
   get-refs:
     runs-on: ubuntu-latest
@@ -36,7 +36,7 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-          ref:  ${{fromJson(needs.get-refs.outputs.refs) }}
+        ref: ${{fromJson(needs.get-refs.outputs.refs) }}
     steps:
       - name: Update README
         uses: jcdcdev/jcdcdev.Umbraco.GitHub.PackageReadme@main
@@ -47,4 +47,3 @@ jobs:
           nuget-readme-filepath: ${{ env.NUGET_README_FILEPATH }}
           branch: ${{ matrix.ref }}
           api-key: ${{ secrets.SECURITY_POLICY_API_KEY }}
-      
