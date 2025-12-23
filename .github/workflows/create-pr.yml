@@ -8,7 +8,7 @@ on:
         default: false
         type: boolean
   schedule:
-    - cron: '0 2 * * *'
+    - cron: "0 2 * * *"
 jobs:
   get-branches:
     outputs:
@@ -34,7 +34,7 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-          branch: ${{fromJson(needs.get-branches.outputs.branches)}}
+        branch: ${{fromJson(needs.get-branches.outputs.branches)}}
     runs-on: ubuntu-latest
     env:
       DRY_RUN: ${{ contains(github.event.inputs.dry-run, 'true') }}
@@ -43,25 +43,49 @@ jobs:
         run: |
           TARGET=$(echo ${{ matrix.branch }} | sed 's/dev\///')
           SOURCE=${{ matrix.branch }}
+          # Extract major version from TARGET by removing all non-digit characters
+          MAJOR_VERSION=$(echo "$TARGET" | tr -dc '0-9')
 
           if [ -z "$TARGET" ]; then
             echo "TARGET is empty"
             exit 1
           fi
-        
+
           if [ -z "$SOURCE" ]; then
             echo "SOURCE is empty"
             exit 1
           fi
 
+          if [ -z "$MAJOR_VERSION" ]; then
+            echo "MAJOR_VERSION is empty"
+            exit 1
+          fi
+
+          ACTION_VERSION="1"
+          if [[ "$MAJOR_VERSION" -lt "17" ]]; then
+            ACTION_VERSION="0"
+          fi
+
           echo "SOURCE=$SOURCE"
           echo "TARGET=$TARGET"
+          echo "ACTION_VERSION=$ACTION_VERSION"
 
+          echo "ACTION_VERSION=$ACTION_VERSION" >> $GITHUB_ENV
           echo "SOURCE=$SOURCE" >> $GITHUB_ENV
           echo "TARGET=$TARGET" >> $GITHUB_ENV
-      - name: Create Pull Request
-        id: create-pull-request 
-        uses: jcdcdev/jcdcdev.GitHub.CreatePullRequest@main
+      - name: Create Pull Request - Action v0
+        if: ${{ env.ACTION_VERSION == '0' }}
+        id: create-pull-request-v0
+        uses: jcdcdev/jcdcdev.GitHub.CreatePullRequest@v0
+        with:
+          source-branch: ${{ env.SOURCE }}
+          target-branch: ${{ env.TARGET }}
+          dry-run: ${{ env.DRY_RUN }}
+          github-token: ${{ secrets.JCDC_BOT_TOKEN }}
+      - name: Create Pull Request - Action v1
+        if: ${{ env.ACTION_VERSION == '1' }}
+        id: create-pull-request-v1
+        uses: jcdcdev/jcdcdev.GitHub.CreatePullRequest@v1
         with:
           source-branch: ${{ env.SOURCE }}
           target-branch: ${{ env.TARGET }}
