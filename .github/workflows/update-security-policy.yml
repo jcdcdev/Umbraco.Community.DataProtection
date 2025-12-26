@@ -8,7 +8,7 @@ on:
         default: false
         type: boolean
   schedule:
-    - cron: '0 23,11 * * *'
+    - cron: "0 23,11 * * *"
 jobs:
   get-refs:
     runs-on: ubuntu-latest
@@ -35,7 +35,7 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-          ref:  ${{fromJson(needs.get-refs.outputs.refs) }}
+        ref: ${{fromJson(needs.get-refs.outputs.refs) }}
     steps:
       - name: Update Security Policy
         uses: jcdcdev/jcdcdev.Umbraco.GitHub.PackageSecurity@main
@@ -45,4 +45,3 @@ jobs:
           security-policy-filepath: ${{ env.SECURITY_POLICY_FILEPATH }}
           security-policy-api-key: ${{ secrets.SECURITY_POLICY_API_KEY }}
           branch: ${{ matrix.ref }}
-      
