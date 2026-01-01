@@ -16,11 +16,15 @@ Data protection keys are stored in the Umbraco database.
 
 > Please review the [security policy](https://github.com/jcdcdev/Umbraco.Community.DataProtection?tab=security-ov-file#supported-versions) for more information.
 
-## Quick Start
+## Installation
+
+### Install Package
 
 ```csharp
 dotnet add package Umbraco.Community.DataProtection
 ```
+
+## Quick Start
 
 ```csharp title="Composer.cs"
 using Umbraco.Cms.Core.Composing;
