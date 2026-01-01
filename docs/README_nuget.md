@@ -12,11 +12,15 @@ Simple [ASP.NET Core Data Protection](https://learn.microsoft.com/en-us/aspnet/c
 
 Data protection keys are stored in the Umbraco database.
 
-## Quick Start
+## Installation
+
+### Install Package
 
 ```csharp
 dotnet add package Umbraco.Community.DataProtection
 ```
+
+## Quick Start
 
 ```csharp title="Composer.cs"
 using Umbraco.Cms.Core.Composing;
