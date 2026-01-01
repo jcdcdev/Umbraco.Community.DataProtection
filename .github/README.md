@@ -16,7 +16,6 @@ Data protection keys are stored in the Umbraco database.
 
 > Please review the [security policy](https://github.com/jcdcdev/Umbraco.Community.DataProtection?tab=security-ov-file#supported-versions) for more information.
 
-
 ## Quick Start
 
 ```csharp
@@ -37,8 +36,6 @@ public class Composer : IComposer
     }
 }
 ```
-
-
 
 ## Contributing
 
