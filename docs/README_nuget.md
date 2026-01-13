@@ -16,7 +16,7 @@ Data protection keys are stored in the Umbraco database.
 
 ### Install Package
 
-```csharp
+```powershell
 dotnet add package Umbraco.Community.DataProtection
 ```
 
