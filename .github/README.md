@@ -34,7 +34,6 @@ Contributions to this package are most welcome! Please visit the [Contributing](
 Thank you to the following projects and individuals for their contributions. High five, you rock! 🤘🦄
 
 - LottePitcher - [opinionated-package-starter](https://github.com/LottePitcher/opinionated-package-starter)
-- jcdcdev - [jcdcdev.Umbraco.PackageTemplate](https://github.com/jcdcdev/jcdcdev.Umbraco.PackageTemplate)
 
 
 
