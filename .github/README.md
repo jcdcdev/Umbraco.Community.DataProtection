@@ -12,18 +12,10 @@ Simple [ASP.NET Core Data Protection](https://learn.microsoft.com/en-us/aspnet/c
 
 Data protection keys are stored in the Umbraco database.
 
-> [!IMPORTANT]
-> Version 16 will only receive security updates and no new features.
+> [!WARNING]
+> Version 16 is no longer supported and is End of Life (EOL).
 
 > Please review the [security policy](https://github.com/jcdcdev/Umbraco.Community.DataProtection?tab=security-ov-file#supported-versions) for more information.
-
-## Installation
-
-### Install Package
-
-```powershell
-dotnet add package Umbraco.Community.DataProtection
-```
 
 ## Security
 
