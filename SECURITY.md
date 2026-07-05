@@ -7,18 +7,21 @@ The following table outlines the versions of the project that are currently supp
 > [!NOTE]
 > Once a version starts its security phase, it will no longer receive feature updates. Only critical bug fixes and security updates will be provided.
 
-| Package Version                                                                            | Umbraco Version | Security Phase Start | End of Life |
-| ---------------------------------------------------------------------------------- | --------------- | -------------------- | ----------- || [13.x](https://github.com/jcdcdev/Umbraco.Community.DataProtection/tree/v13) | 13 | 2025-12-14 | 2026-12-14 |
-| [16.x](https://github.com/jcdcdev/Umbraco.Community.DataProtection/tree/v16) | 16 | 2026-03-12 | 2026-06-12 |
+| Package Version | Umbraco Version | Security Phase Start | End of Life |
+|-----------------|-----------------|----------------------|-------------|
+| [13.x](https://github.com/jcdcdev/Umbraco.Community.DataProtection/tree/v13) | 13 | 2025-12-14 | 2026-12-14 |
 | [17.x](https://github.com/jcdcdev/Umbraco.Community.DataProtection/tree/v17) | 17 | 2027-11-27 | 2028-11-27 |
+| [18.x](https://github.com/jcdcdev/Umbraco.Community.DataProtection/tree/v18) | 18 | 2027-03-25 | 2027-06-25 |
 
 ## Unsupported Versions
 
-| Package Version                                                               |  Umbraco Version  | End of Life |
-| ---------------------------------------------------------------------------------- | ---------------  | ----------- || [10.x](https://github.com/jcdcdev/Umbraco.Community.DataProtection/tree/v10) | 10 | 2025-06-16 |
+| Package Version | Umbraco Version | End of Life |
+|-----------------|-----------------|-------------|
+| [10.x](https://github.com/jcdcdev/Umbraco.Community.DataProtection/tree/v10) | 10 | 2025-06-16 |
 | [12.x](https://github.com/jcdcdev/Umbraco.Community.DataProtection/tree/v12) | 12 | 2024-06-29 |
 | [14.x](https://github.com/jcdcdev/Umbraco.Community.DataProtection/tree/v14) | 14 | 2025-05-30 |
 | [15.x](https://github.com/jcdcdev/Umbraco.Community.DataProtection/tree/v15) | 15 | 2025-11-14 |
+| [16.x](https://github.com/jcdcdev/Umbraco.Community.DataProtection/tree/v16) | 16 | 2026-06-12 |
 
 
 
