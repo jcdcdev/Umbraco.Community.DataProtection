@@ -50,7 +50,7 @@ branches:
     label: "alpha"
     increment: Patch
     source-branches: [vX-release]
-    is-main-branch: false
+    is-main-branch: true
     pre-release-weight: 30000
 
   main:
