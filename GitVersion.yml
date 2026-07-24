@@ -50,7 +50,7 @@ branches:
     label: "alpha"
     increment: Patch
     source-branches: [vX-release]
-    is-main-branch: false
+    is-main-branch: true
     pre-release-weight: 30000
 
   main:
@@ -73,10 +73,7 @@ branches:
       when-current-commit-tagged: false
     track-merge-message: true
     regex: ^(pull-requests|pull|pr)[\/-](?<Number>\d*)
-    source-branches:
-      - main
-      - vX-release
-      - dev-vX
+    source-branches: [vX-release]
     pre-release-weight: 30000
 
   unknown:
